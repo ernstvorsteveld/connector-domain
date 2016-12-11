@@ -1,4 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'idea'
 apply from: "$projectDir/gradle/publish.gradle"
+
+group = 'com.vorstdev.provisioning'
+version = '0.1-SNAPSHOT'
+
+group = 'com.vorstdev.provisioning'
+version = '0.1-SNAPSHOT'
+
+repositories {
+    maven { url 'http://localhost:8081/nexus/content/repositories/snapshots' }
+    mavenCentral()
+    maven { url 'http://repo.spring.io/release' }
+    maven { url "http://repo.spring.io/libs-snapshot-local" }
+    maven { url "http://repo.spring.io/libs-milestone-local" }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.2.1"
+}
+
+sourceCompatibility=JavaVersion.VERSION_1_8
+targetCompatibility=JavaVersion.VERSION_1_8
+
+configurations.all {
+    resolutionStrategy {
+        cacheChangingModulesFor 0, 'seconds'
+    }
+}
 
 jar {
     baseName = 'connector-domain'
@@ -15,4 +44,3 @@ dependencies {
     compile("org.apache.commons:commons-lang3:3.4")
     testCompile("junit:junit:4.12")
 }
-
