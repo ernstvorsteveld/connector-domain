@@ -5,9 +5,6 @@ apply from: "$projectDir/gradle/publish.gradle"
 group = 'com.vorstdev.provisioning'
 version = '0.1-SNAPSHOT'
 
-group = 'com.vorstdev.provisioning'
-version = '0.1-SNAPSHOT'
-
 repositories {
     maven { url 'http://localhost:8081/nexus/content/repositories/snapshots' }
     mavenCentral()
